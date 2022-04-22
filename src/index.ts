@@ -7,12 +7,12 @@ const port = 4000;
 
 /*
     Express Router could be used here to add greater modularity for
-    sets of routes, e.g., there could be separate route for Movies 
-    and Shows: 
+    sets of routes, e.g., there could be separate route for
+    the weather now, tomorrow, the next ten days, etc. 
 
     const router = express.Router();
-    router.use('/movies', MovieLogic); 
-    router.use('/shows', ShowLogic); 
+    router.use('/now', Now); 
+    router.use('/tomorrow', Tomorrow); 
 */
 
 /*
