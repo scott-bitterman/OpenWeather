@@ -2,12 +2,12 @@
     This module takes in a raw object response from OpenWeather API
     and transforms it into the desired wrapper schema
 */
-const { Weather } = require('./interfaces.ts');
-const { getTempType, getAlert } = require('./helpers.ts');
+const { Weather } = require('./interfaces');
+const { getTempType, getAlert } = require('./helpers');
 
 export const WeatherTranslator = {
 
-    now(openWeatherRes):typeof Weather {
+    now(openWeatherRes: any):typeof Weather {
         const { temp, weather } = openWeatherRes.current;
         const { main, description } = weather[0];
         return {

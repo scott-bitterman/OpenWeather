@@ -1,7 +1,7 @@
+// A setting needs to be tweaked for import to work
 // import { WeatherTranslator } from '../../src/models/openWeatherTranslator';
 // import { Alert, Weather } from '../../src/models/interfaces';
-const { WeatherTranslator } = require('../../src/models/openWeatherTranslator');
-const { Alert, Weather } = require('../../src/models/interfaces');
+const { WeatherTranslator } = require('../../models/openWeatherTranslator');
 
 test('Translates OpenWeather App with alert', () => {
     const res = WeatherTranslator.now(example);
@@ -39,19 +39,6 @@ test('tempType cold', () => {
     expect(res.tempType).toBe('cold');
 });
 
-
-/*{
-    condition: 'Clouds',
-    description: 'scattered clouds',
-    tempType: 'hot',
-    alert: {
-        event: 'Heat Advisory',
-        start: 1597341600,
-        end: 1597366800,
-        description: '...HEAT ADVISORY REMAINS IN EFFECT FROM 1 PM THIS AFTERNOON TO\n' +
-        '8 PM CDT THIS EVENING.'
-    }
-} */
 const example = {
     "lat": 33.7429,
     "lon": -84.2863,

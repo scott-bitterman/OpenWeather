@@ -5,11 +5,13 @@ import { now } from '../controllers/now';
 const router = express.Router();
 
 // base route for now
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', (req: Request, res: Response, next: NextFunction) => {
     const {lat, lon} = req.query;
-    const data = await now(lat, lon);
-    res.send(data);
+    now(lat, lon)
+    .then(data => {
+        res.send(data);
+    })
+    .catch(next);
 });
-
 
 export default router;

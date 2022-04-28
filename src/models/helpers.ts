@@ -1,4 +1,5 @@
-const { Alert } = require('./interfaces.ts');
+const { Alert } = require('./interfaces');
+// import { Alert } from './interfaces';
 
 /*
     Determins alert from original OpenWeather API alerts response
@@ -21,42 +22,10 @@ export function getAlert(alerts = []):typeof Alert | null {
     Derives tempType from tempTypes definitions
 */
 export function getTempType(temp: number):string {
-    let typeFound = 'unknown';
-    tempTypes.some(({type, def}) => {
-        const isThisDef = def(temp);
-        if (isThisDef) {
-            typeFound = type;
-            return true;
-        }
-    });
-    return typeFound;
+    if (temp >= 80 ) {
+        return 'hot';
+    } else if (temp <= 45) {
+        return 'cold';
+    } 
+    return 'standard';
 }
-
-/*
-    tempType definitions might be defined further for 
-    any number of ranges, e.g., warm, cool, mind-numbingly-cold, or 
-    scorching-hot.
-*/
-export const tempTypes = [
-
-    {
-        type: 'hot',
-        def: (temp: number):boolean => {
-            return 80 <= temp;
-        },
-    },
-    {
-        type: 'standard',
-        def: (temp: number):boolean => {
-            return 80 > temp && temp > 45;
-        },
-    },
-    {
-        type: 'cold',
-        def: (temp: number):boolean => {
-            return 45 >= temp;
-        },
-    },
-
-    //... define other temp types here
-];

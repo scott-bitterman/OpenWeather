@@ -5,17 +5,21 @@
     into a services directory.
 */
 import axios from 'axios';
-import config from './config';
+import config from '../config';
 import { WeatherTranslator } from './openWeatherTranslator';
 const { api_key, baseURL } = config.openWeatherAPI;
 
 // Just a simple decoupled API call for GET requests
 async function callAPI(url: string): Promise<any> {
     console.log(`API request to ${baseURL} -- ATTEMPT`);
-    const res = await axios.get(url);
-    console.log(res.data);
-    console.log(`API request to ${baseURL} -- SUCCESS`);
-    return res.data;
+    try {    
+        const res = await axios.get(url);
+        console.log(`API request to ${baseURL} -- SUCCESS`);
+        return res.data;
+    } catch(e) {
+        // console.log('Error when calling Open Weather API:', e.message, e.response.data, e.status, e.statusCode);
+        throw Error(JSON.stringify(e.response.data));
+    }
 }
 
 export async function now(lat: number, lon: number): Promise<any> {
