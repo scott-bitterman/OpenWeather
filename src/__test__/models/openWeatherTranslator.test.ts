@@ -1,6 +1,4 @@
 // A setting needs to be tweaked for import to work
-// import { WeatherTranslator } from '../../src/models/openWeatherTranslator';
-// import { Alert, Weather } from '../../src/models/interfaces';
 const { WeatherTranslator } = require('../../models/openWeatherTranslator');
 
 test('Translates OpenWeather App with alert', () => {
