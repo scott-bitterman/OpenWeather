@@ -35,3 +35,6 @@ Run all tests from root:
 ## Improvements
 1. Better error checking/handling
 2. Improve unit and integration tests
+
+[![Coverage Status](https://github.com/taciturnip/OpenWeather/workflows/Node.js%20CI/badge.svg)](https://github.com/taciturnip/OpenWeather/actions/workflows/node.js.yml)
+
