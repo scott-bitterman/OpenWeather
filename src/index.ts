@@ -19,17 +19,18 @@ app.use((req: Request, {}, next: NextFunction) => {
     routes for other functionality, sub-routes, or possible CRUD operations
     provides a framework to grow the app.
 */
-app.get('/', (req, res) => {
+app.get('/', ({}, res: Response) => {
     res.send({msg: 'API is running.'});
 });
 app.use('/now', now);
 app.use('/yesterday', yesterday);
 
-// Errors
-app.use((err, req, res, next) => {
+// Generic Error Handler
+app.use((err, {}, res, {}) => {
     console.log(err.message);
-    const errCode = JSON.parse(err.message).cod || 500;
-    res.status(errCode).send(err.message);
+    const errObj = JSON.parse(err.message);
+    const errCode = errObj.cod || 500;
+    res.status(errCode).send(errObj);
 });
 
 export default app;

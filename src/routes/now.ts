@@ -1,6 +1,5 @@
 // A place for all routes related to the current weather are here
 import express, { Request, Response, NextFunction } from 'express';
-// import { now } from '../controllers/';
 import { now } from '../controllers/now';
 const router = express.Router();
 
@@ -10,8 +9,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
     now(lat, lon)
     .then(data => {
         res.send(data);
-    })
-    .catch(next);
+    }).catch(next);
 });
 
 export default router;
