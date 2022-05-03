@@ -1,6 +1,5 @@
 // A place for all routes related to the current weather are here
 import express, { Request, Response } from 'express';
-// import { now } from '../controllers/';
 import { yesterday } from '../controllers/yesterday';
 const router = express.Router();
 
